@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisob-faktura</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 297mm; /* A4 balandligi */
+            width: 210mm; /* A4 eni */
+            background: #f4f4f9;
+        }
+        .invoice-container {
+            width: 210mm; /* To'liq A4 eni */
+            height: auto; 
+            padding: 10mm;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 16px;
+            margin: 0;
+            color: #333;
+        }
+        .header p {
+            margin: 2px 0;
+            font-size: 12px;
+            color: #555;
+        }
+        .invoice-title {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+            color: #333;
+            font-weight: 600;
+        }
+        table td {
+            color: #555;
+        }
+        .footer {
+            font-size: 10px;
+            color: #888;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <h1>AL-Aziz Forest</h1>
+            <p>123 Main Street, Toshkent</p>
+            <p>Telefon: +998 90 123-45-67</p>
+        </div>
+        <div class="invoice-title">
+            <h2>Hisob-faktura Tafsilotlari</h2>
+        </div>
+        <table>
+            <tr>
+                <th>Maydon</th>
+                <th>Qiymat</th>
+            </tr>
+            <tr>
+                <td>Mijoz ismi</td>
+                <td id="customer_name"></td>
+            </tr>
+            <tr>
+                <td>Mahsulotlar</td>
+                <td id="products"></td>
+            </tr>
+            <tr>
+                <td>Mahsulot Rangi</td>
+                <td id="product_color"></td>
+            </tr>
+            <tr>
+                <td>Mahsulot miqdori (Dona)</td>
+                <td id="quantity"></td>
+            </tr>
+            <tr>
+                <td>Xizmatlar</td>
+                <td id="services"></td>
+            </tr>
+            <tr>
+                <td>Buyurtma vaqti</td>
+                <td id="order_time"></td>
+            </tr>
+            <tr>
+                <td>Umumiy summa</td>
+                <td id="total_amount"></td>
+            </tr>
+            <tr>
+                <td>To‘langan summa</td>
+                <td id="paid_amount"></td>
+            </tr>
+            <tr>
+                <td>Nasiyaga qoldi</td>
+                <td id="remaining_amount"></td>
+            </tr>
+            <tr>
+                <td>To‘lov holati</td>
+                <td id="payment_status"></td>
+            </tr>
+            <tr>
+                <td>Buyurtma holati</td>
+                <td id="order_status"></td>
+            </tr>
+            <tr>
+                <td>Keyingi to‘lov sanasi</td>
+                <td id="next_payment_date"></td>
+            </tr>
+        </table>
+        <div class="footer">
+            <p>Bizni tanlaganingiz uchun tashakkur!</p>
+        </div>
+    </div>
+    <script>
+        // URL dan parametrlarni o'qish uchun funksiya
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || "";
+        }
+
+        // Ma'lumotlarni to'ldirish
+        document.getElementById("customer_name").textContent = getQueryParam("customer_name");
+        document.getElementById("products").textContent = getQueryParam("products");
+        document.getElementById("product_color").textContent = getQueryParam("product_color");
+        document.getElementById("quantity").textContent = getQueryParam("quantity");
+        document.getElementById("services").textContent = getQueryParam("services");
+        document.getElementById("order_time").textContent = getQueryParam("order_time");
+        document.getElementById("total_amount").textContent = getQueryParam("total_amount");
+        document.getElementById("paid_amount").textContent = getQueryParam("paid_amount");
+        document.getElementById("remaining_amount").textContent = getQueryParam("remaining_amount");
+        document.getElementById("payment_status").textContent = getQueryParam("payment_status");
+        document.getElementById("order_status").textContent = getQueryParam("order_status");
+        document.getElementById("next_payment_date").textContent = getQueryParam("next_payment_date");
+    </script>
+</body>
+</html>
